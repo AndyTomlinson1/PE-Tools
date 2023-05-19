@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace PE_Tools
         private List<string> GetDatabases()
         {
             Databases = new List<string>();
-            string ConnectionString = @"server = (local)\SQLEXPRESS; Integrated Security = True; Pooling = True;";
+            string ConnectionString = ConfigurationSettings.AppSettings["connectionString"];
+
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
                 con.Open();
