@@ -29,7 +29,7 @@ namespace PE_Tools
 
         private List<ListItem> getViewItems()
         {//TODO: get list of folders form config file
-            return new List<ListItem>() { new ListItem(@"select"), new ListItem(@"Databases"), new ListItem(@"Powershell") };
+            return new List<ListItem>() { new ListItem(@"select"), new ListItem(@"Databases"), new ListItem(@"Powershell"), new ListItem(@"Logs") };
         }
         private void cbViews_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -43,11 +43,19 @@ namespace PE_Tools
             {
                 this.powershellCommandsView1.Visible = true;
                 this.databaseSettingsView1.Visible = false;
+                this.logView1.Visible = false;
             }
             else if (viewName == "Databases")
             {
                 this.powershellCommandsView1.Visible = false;
                 this.databaseSettingsView1.Visible = true;
+                this.logView1.Visible = false;
+            }
+            else if (viewName == "Logs")
+            {
+                this.powershellCommandsView1.Visible = false;
+                this.databaseSettingsView1.Visible = false;
+                this.logView1.Visible = true;
             }
         }
 

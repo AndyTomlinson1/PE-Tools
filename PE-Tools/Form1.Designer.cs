@@ -31,6 +31,7 @@
             this.cbViews = new System.Windows.Forms.ComboBox();
             this.databaseSettingsView1 = new PE_Tools.Views.DatabaseSettingsView();
             this.powershellCommandsView1 = new PE_Tools.Views.PowershellCommandsView();
+            this.logView1 = new PE_Tools.Views.LogView();
             this.SuspendLayout();
             // 
             // cbViews
@@ -59,6 +60,15 @@
             this.powershellCommandsView1.TabIndex = 24;
             this.powershellCommandsView1.Visible = false;
             // 
+            // logView1
+            // 
+            this.logView1.Location = new System.Drawing.Point(5, 41);
+            this.logView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.logView1.Name = "logView1";
+            this.logView1.Size = new System.Drawing.Size(1515, 598);
+            this.logView1.TabIndex = 24;
+            this.logView1.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -69,6 +79,7 @@
             this.Controls.Add(this.cbViews);
             this.Controls.Add(this.databaseSettingsView1);
             this.Controls.Add(this.powershellCommandsView1);
+            this.Controls.Add(this.logView1);
             this.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
@@ -81,6 +92,7 @@
         #endregion
         private Views.DatabaseSettingsView databaseSettingsView1;
         private Views.PowershellCommandsView powershellCommandsView1;
+        private Views.LogView logView1;
         private System.Windows.Forms.ComboBox cbViews;
     }
 }

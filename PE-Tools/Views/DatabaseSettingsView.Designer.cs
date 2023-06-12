@@ -151,6 +151,7 @@
             // 
             // userControlProjectSelector1
             // 
+            this.userControlProjectSelector1.Callback = null;
             this.userControlProjectSelector1.FolderNames = null;
             this.userControlProjectSelector1.Location = new System.Drawing.Point(18, 29);
             this.userControlProjectSelector1.Name = "userControlProjectSelector1";
