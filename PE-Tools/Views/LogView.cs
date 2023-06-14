@@ -25,6 +25,7 @@ namespace PE_Tools.Views
         private int selectedSearchItem = 0;
 
         private bool caseSensitive = false;
+        private string searchTerm = "";
 
         public LogView()
         {
@@ -94,13 +95,25 @@ namespace PE_Tools.Views
 
         private void textEdit1_EditValueChanged(object sender, EventArgs e)
         {
-            var searchTerm = textEdit1.Text;
+            searchTerm = textEdit1.Text;
+            searchOnTerm();
+        }
+
+        private void searchOnTerm()
+        { 
+            if(this.SelectedFile == null)
+            {
+                MessageBox.Show("Please select a log file");
+                return;
+            }
+
             if (!string.IsNullOrWhiteSpace(searchTerm) && searchTerm.Count() >= 3)
             {
                 search(searchTerm);
             }
             else
             {
+                this.labelSearchSummary.Text = "add search term";
                 this.SearchResults.Clear();
                 showSelectedItem();
             }
@@ -124,6 +137,7 @@ namespace PE_Tools.Views
             {
                 this.selectedSearchItem = 0;
                 showSelectedItem();
+                this.labelSearchSummary.Text = "No reference found";
             }
         }
 
@@ -186,6 +200,7 @@ namespace PE_Tools.Views
         private void checkBoxCaseSensitive_CheckedChanged(object sender, EventArgs e)
         {
             caseSensitive = !caseSensitive;
+            searchOnTerm();
         }
     }
 }
