@@ -21,7 +21,7 @@ namespace PE_Tools.Views
         public Folder SelectedFile{ get; set; }
         public FolderSelectedNotification Callback { get; set; }
         public List<string> LogData { get; set; }
-        private Dictionary<int, string> SearchResults = new Dictionary<int, string>();
+        private List<Tuple<int, string>> SearchResults = new List<Tuple<int, string>>();
         private int selectedSearchItem = 0;
 
         private bool caseSensitive = false;
@@ -123,9 +123,12 @@ namespace PE_Tools.Views
         {
             this.SearchResults.Clear();
             var entries = this.LogData.Where(d => caseSensitive ? d.Contains(searchTerm) : d.ToLower().Contains(searchTerm.ToLower())).ToList();
+
+            var cnt = 0;
             entries.ForEach(e =>
             {
-                this.SearchResults[LogData.IndexOf(e)] = e;
+                Console.WriteLine($"{cnt++} - {LogData.IndexOf(e)} : {e}");
+                this.SearchResults.Add(new Tuple<int, string>(LogData.IndexOf(e), e));
             });
 
             if(entries.Any())
@@ -163,9 +166,9 @@ namespace PE_Tools.Views
         {
             if (SearchResults.Any())
             {
-                var index = SearchResults.Keys.ToList()[selectedSearchItem];
-                var nthValue = SearchResults[index];
-                this.outputListBox.SelectedIndex = index;
+                var index = SearchResults[selectedSearchItem];
+                var nthValue = index.Item2;
+                this.outputListBox.SelectedIndex = index.Item1;
                 this.outputListBox.TopIndex = outputListBox.SelectedIndex;
                 this.labelSearchSummary.Text = $"Showing result {selectedSearchItem + 1} of {SearchResults.Count}";
                 this.buttonPrevious.Enabled = selectedSearchItem > 0;
