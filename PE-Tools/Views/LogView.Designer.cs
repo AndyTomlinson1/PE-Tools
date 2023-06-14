@@ -40,6 +40,7 @@
             this.userControlProjectSelector1 = new PE_Tools.Views.UserControlProjectSelector();
             this.buttonFirst = new System.Windows.Forms.Button();
             this.buttonLast = new System.Windows.Forms.Button();
+            this.checkBoxCaseSensitive = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -157,7 +158,6 @@
             this.buttonFirst.Text = "First";
             this.buttonFirst.UseVisualStyleBackColor = true;
             this.buttonFirst.Click += new System.EventHandler(this.buttonFirst_Click);
-            this.buttonFirst.Enabled = false;
             // 
             // buttonLast
             // 
@@ -169,12 +169,23 @@
             this.buttonLast.Text = "Last";
             this.buttonLast.UseVisualStyleBackColor = true;
             this.buttonLast.Click += new System.EventHandler(this.buttonLast_Click);
-            this.buttonLast.Enabled = false;
+            // 
+            // checkBoxCaseSensitive
+            // 
+            this.checkBoxCaseSensitive.AutoSize = true;
+            this.checkBoxCaseSensitive.Location = new System.Drawing.Point(561, 76);
+            this.checkBoxCaseSensitive.Name = "checkBoxCaseSensitive";
+            this.checkBoxCaseSensitive.Size = new System.Drawing.Size(96, 17);
+            this.checkBoxCaseSensitive.TabIndex = 58;
+            this.checkBoxCaseSensitive.Text = "Case Sensitive";
+            this.checkBoxCaseSensitive.UseVisualStyleBackColor = true;
+            this.checkBoxCaseSensitive.CheckedChanged += new System.EventHandler(this.checkBoxCaseSensitive_CheckedChanged);
             // 
             // LogView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkBoxCaseSensitive);
             this.Controls.Add(this.buttonLast);
             this.Controls.Add(this.buttonFirst);
             this.Controls.Add(this.labelSearchSummary);
@@ -209,5 +220,6 @@
         private DevExpress.XtraEditors.LabelControl labelSearchSummary;
         private System.Windows.Forms.Button buttonFirst;
         private System.Windows.Forms.Button buttonLast;
+        private System.Windows.Forms.CheckBox checkBoxCaseSensitive;
     }
 }

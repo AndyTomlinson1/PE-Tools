@@ -24,6 +24,8 @@ namespace PE_Tools.Views
         private Dictionary<int, string> SearchResults = new Dictionary<int, string>();
         private int selectedSearchItem = 0;
 
+        private bool caseSensitive = false;
+
         public LogView()
         {
             InitializeComponent();
@@ -107,7 +109,7 @@ namespace PE_Tools.Views
         private void search(string searchTerm)
         {
             this.SearchResults.Clear();
-            var entries = this.LogData.Where(d => d.Contains(searchTerm)).ToList();
+            var entries = this.LogData.Where(d => caseSensitive ? d.Contains(searchTerm) : d.ToLower().Contains(searchTerm.ToLower())).ToList();
             entries.ForEach(e =>
             {
                 this.SearchResults[LogData.IndexOf(e)] = e;
@@ -179,6 +181,11 @@ namespace PE_Tools.Views
         {
             selectedSearchItem = 0;
             showSelectedItem();
+        }
+
+        private void checkBoxCaseSensitive_CheckedChanged(object sender, EventArgs e)
+        {
+            caseSensitive = !caseSensitive;
         }
     }
 }
